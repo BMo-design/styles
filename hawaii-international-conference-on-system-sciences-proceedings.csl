@@ -18,7 +18,7 @@
     </contributor>
     <category citation-format="numeric"/>
     <category field="engineering"/>
-    <updated>2015-05-27T16:21:02+00:00</updated>
+    <updated>2015-05-27T16:33:57+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="author">
@@ -114,9 +114,9 @@
           </group>
         </else-if>
         <else-if type="chapter paper-conference" match="any">
-          <text term="in" text-case="capitalize-first" suffix=" "/>
+          <text term="in" text-case="capitalize-first" prefix="In " suffix=" "/>
           <text macro="editor" suffix=", "/>
-          <text variable="container-title" font-style="italic" suffix=". "/>
+          <text variable="container-title" font-style="italic" suffix=", "/>
           <group suffix="." delimiter=", ">
             <text macro="book-publisher"/>
             <text variable="page" prefix="pp. "/>
