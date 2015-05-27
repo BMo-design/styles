@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+<style class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US" xmlns="http://purl.org/net/xbiblio/csl">
+<!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
   <info>
-    <title>Hawaii International Conference on System Sciences Proceedings</title>
+    <title>Hawaii International Conference on System Sciences </title>
     <title-short>HICSS Proceedings</title-short>
-    <id>http://www.zotero.org/styles/hawaii-international-conference-on-system-sciences-proceedings</id>
-    <link href="http://www.zotero.org/styles/hawaii-international-conference-on-system-sciences-proceedings" rel="self"/>
+    <id>http://www.zotero.org/styles/hawaii-international-conference-on-system-sciences</id>
+    <link href="http://www.zotero.org/styles/hawaii-international-conference-on-system-sciences" rel="self"/>
     <link href="http://www.zotero.org/styles/acm-sigchi-proceedings" rel="template"/>
     <link href="http://www.hicss.hawaii.edu/hicss_45/45specsfinalformat.doc" rel="documentation"/>
     <author>
       <name>Jeff Hemsley</name>
       <email>jhemsley@uw.edu</email>
     </author>
+    <contributor>
+      <name>Benedikt Morschheuser</name>
+      <email>morschheuser@es.uni-mannheim.de</email>
+    </contributor>
     <category citation-format="numeric"/>
     <category field="engineering"/>
-    <updated>2012-09-27T22:06:38+00:00</updated>
+    <updated>2015-05-27T16:01:11+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="author">
-    <group suffix=".">
+    <group>
       <names variable="author">
-        <name initialize-with="." delimiter=", " and="text" name-as-sort-order="all" sort-separator=", "/>
+        <name and="text" initialize-with="." name-as-sort-order="first"/>
         <label form="short" prefix=", "/>
         <substitute>
           <names variable="editor"/>
@@ -29,17 +34,17 @@
   </macro>
   <macro name="editor">
     <names variable="editor">
-      <name initialize-with="." delimiter=", " and="text" delimiter-precedes-last="never"/>
+      <name and="text" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="first"/>
       <label form="short" prefix=", "/>
     </names>
   </macro>
   <macro name="title">
     <choose>
       <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
-        <text variable="title" font-style="italic" quotes="false"/>
+        <text variable="title" quotes="false" font-style="normal" suffix=","/>
       </if>
       <else>
-        <text variable="title" quotes="false"/>
+        <text variable="title" quotes="false" prefix="&quot;" suffix="&quot;,"/>
       </else>
     </choose>
   </macro>
@@ -49,22 +54,26 @@
     </date>
   </macro>
   <macro name="journal">
-    <group suffix=", " delimiter=" " font-style="italic">
-      <text variable="container-title"/>
+    <group font-style="normal" delimiter=" " suffix=", ">
+      <text variable="container-title" font-style="normal"/>
+    </group>
+    <group suffix=", ">
       <text variable="volume"/>
+      <text variable="issue" form="short" strip-periods="false" prefix="(" suffix=")"/>
     </group>
     <group delimiter=" ">
-      <text variable="issue"/>
-      <text macro="year" prefix="(" suffix=")"/>
+      <text macro="year"/>
     </group>
   </macro>
   <macro name="conference">
-    <group delimiter=", ">
-      <text variable="container-title" font-style="italic"/>
-      <group delimiter=" ">
-        <text variable="publisher"/>
-        <text macro="year" prefix="(" suffix=")"/>
-      </group>
+    <group suffix=", ">
+      <text variable="container-title" font-style="normal"/>
+    </group>
+    <group delimiter=" " suffix=", ">
+      <text variable="publisher"/>
+    </group>
+    <group>
+      <text macro="year"/>
     </group>
   </macro>
   <macro name="book-publisher">
@@ -92,8 +101,8 @@
     </sort>
     <layout suffix=".">
       <text variable="citation-number" prefix="[" suffix="] "/>
-      <text macro="author" suffix=". "/>
-      <text macro="title" suffix=". "/>
+      <text macro="author" suffix=", "/>
+      <text macro="title" suffix=" "/>
       <choose>
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <text macro="book-publisher" suffix="."/>
@@ -101,7 +110,7 @@
         <else-if type="paper-conference">
           <group suffix="." delimiter=", ">
             <text macro="conference"/>
-            <text variable="page"/>
+            <text variable="page" prefix="pp. "/>
           </group>
         </else-if>
         <else-if type="chapter paper-conference" match="any">
@@ -110,13 +119,13 @@
           <text variable="container-title" font-style="italic" suffix=". "/>
           <group suffix="." delimiter=", ">
             <text macro="book-publisher"/>
-            <text variable="page"/>
+            <text variable="page" prefix="pp. "/>
           </group>
         </else-if>
         <else-if type="article-journal">
           <group suffix="." delimiter=", ">
             <text macro="journal"/>
-            <text variable="page"/>
+            <text variable="page" prefix="pp. "/>
           </group>
         </else-if>
         <else>
