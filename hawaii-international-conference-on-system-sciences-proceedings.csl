@@ -18,7 +18,7 @@
     </contributor>
     <category citation-format="numeric"/>
     <category field="engineering"/>
-    <updated>2015-05-27T16:33:57+00:00</updated>
+    <updated>2015-05-27T17:09:25+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="author">
@@ -54,7 +54,7 @@
     </date>
   </macro>
   <macro name="journal">
-    <group font-style="normal" delimiter=" " suffix=", ">
+    <group font-style="normal" suffix=", ">
       <text variable="container-title" font-style="normal"/>
     </group>
     <group suffix=", ">
@@ -66,14 +66,12 @@
     </group>
   </macro>
   <macro name="conference">
-    <group suffix=", ">
+    <group delimiter=", ">
       <text variable="container-title" font-style="normal"/>
-    </group>
-    <group delimiter=" " suffix=", ">
-      <text variable="publisher"/>
-    </group>
-    <group>
       <text macro="year"/>
+      <text variable="event-place"/>
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
     </group>
   </macro>
   <macro name="book-publisher">
@@ -108,13 +106,14 @@
           <text macro="book-publisher" suffix="."/>
         </if>
         <else-if type="paper-conference">
-          <group suffix="." delimiter=", ">
+          <text term="in" text-case="capitalize-first" suffix=" "/>
+          <group delimiter=", " suffix=".">
             <text macro="conference"/>
             <text variable="page" prefix="pp. "/>
           </group>
         </else-if>
         <else-if type="chapter paper-conference" match="any">
-          <text term="in" text-case="capitalize-first" prefix="In " suffix=" "/>
+          <text term="in" text-case="capitalize-first" suffix=" "/>
           <text macro="editor" suffix=", "/>
           <text variable="container-title" font-style="italic" suffix=", "/>
           <group suffix="." delimiter=", ">
